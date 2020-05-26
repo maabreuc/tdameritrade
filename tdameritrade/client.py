@@ -487,7 +487,7 @@ class TDClient(object):
             accountId (int): id of account to place order under
             order (JSON): order instance to place
         '''
-        return self._request(PLACE_ORDER.format(accountId=accountId), method='POST', data=order).json()
+        return self._request(PLACE_ORDER.format(accountId=accountId), method='POST', json=order).status_code
 
     def replaceOrder(self, accountId, orderId, order):
         '''place an order
@@ -497,7 +497,7 @@ class TDClient(object):
             orderId (int): id of order to replace
             order (JSON): order instance to place
         '''
-        return self._request(REPLACE_ORDER.format(accountId=accountId, orderId=orderId), method='PUT', data=order).json()
+        return self._request(REPLACE_ORDER.format(accountId=accountId, orderId=orderId), method='PUT', json=order).status_code
 
     def savedOrders(self, accountId=None, savedOrderId=None):
         '''get saved orders
